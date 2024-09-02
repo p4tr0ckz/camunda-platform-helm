@@ -30,7 +30,7 @@ data:
         client:
           url: {{ include "camundaPlatform.operateURL" . | quote }}
           {{- if eq .Values.connectors.inbound.mode "credentials" }}
-          username: connectors
+          username: {{ .Values.connectors.inbound.auth.existingId | default "connectors" }}
           {{- end }}
       {{- end }}
       {{- if .Values.global.identity.auth.enabled }}
